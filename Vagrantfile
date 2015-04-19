@@ -25,11 +25,11 @@ Vagrant.configure(2) do |config|
   # config.vm.network "forwarded_port", guest: 80, host: 8080
 
   #Meteorjs
-  config.vm.network "forwarded_port", guest: 3000, host: 3000
+  config.vm.network :forwarded_port, guest: 3000, host: 3000, auto_correct: true
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  # config.vm.network "private_network", ip: "192.168.33.10"
+  config.vm.network "private_network", ip: "192.168.33.10"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -57,6 +57,11 @@ Vagrant.configure(2) do |config|
   #
   # View the documentation for the provider you are using for more
   # information on available options.
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = "1024"
+    vb.cpus = 3
+  end
 
   # Define a Vagrant Push strategy for pushing to Atlas. Other push strategies
   # such as FTP and Heroku are also available. See the documentation at

@@ -1,0 +1,11 @@
+<template name="dashboard">
+    <div id="dashboard">Dashboard!</div>
+    <h2>Desktops:</h2>
+    <ul>
+        {{#each desktops}}
+        <li>
+            <a href="{{pathFor 'kanban' desktopId=this._id}}">{{title}}</a>
+        </li>
+        {{/each}}
+    </ul>
+</template>

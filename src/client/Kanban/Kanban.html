@@ -1,0 +1,31 @@
+<template name="kanban">
+	<h2>kanban! {{title}}</h2>
+	<section id="kanban">
+		{{#each kanban.columns}}
+		<div class="column">
+			<h3 class="columnName">{{title}}</h3>
+			<ul class="cards">
+				{{#each cardsInColumn}} {{> kanbanCard}} {{/each}}
+
+				{{#if createCardInColumn}}
+				<li class="card new">
+					<form class="createCard">
+						<input required autofocus type="text" class="cardName">
+					</form>
+				</li>
+				{{/if}}
+			</ul>
+			{{#unless createCardInColumn}}
+			<button type="button" class="btn btn-default createCard">New card</button>
+			{{/unless}}
+		</div>
+		{{/each}}
+	</section>
+
+	<!-- {{> yield "cardDetail"}} -->
+</template>
+<template name="kanbanCard">
+	<li class="card">
+		<a href="{{pathFor 'kanbanCardDetail' desktopId=../../_id cardId=this._id}}">{{title}}</a>
+	</li>
+</template>
