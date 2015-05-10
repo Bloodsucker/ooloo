@@ -38,13 +38,15 @@ Template.kanban.onRendered(function () {
 				if (!bModal.attached) return;
 
 				var controller = Router.current();
-				if (controller.params.cardId && controller.params.cardId !== cardId) {
-					return;
-				}
+				// if (controller.params.cardId && controller.params.cardId !== cardId) {
+				// 	return;
+				// }
 
 				Router.go('kanban', {
 					desktopId: controller.params.desktopId
 				});
+
+				bModal = null;
 			});
 		} else {
 			bModal && bModal.destroy();
