@@ -59,16 +59,5 @@ Template.KanbanCardDetail.events({
 
 //remove this from here. This should be controlled, somehow, in the Kanban.js
 Template.KanbanCardDetail.onDestroyed(function () {
-	var self = this;
-
 	Session.set('KanbanCardDetail_title', null);
-
-	var controller = Router.current();
-	if (controller.params.cardId && controller.params.cardId !== self.data._id) {
-		return;
-	}
-
-	Router.go('kanban', {
-		desktopId: controller.params.desktopId
-	});
 });

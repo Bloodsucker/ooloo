@@ -1,28 +1,23 @@
 <template name="KanbanCardDetail">
-    <div class="modal fade cardDetailModal">
-        <div class="modal-dialog">
-            <form class="modal-content cardDetail">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    {{#if editingCardTitle}}
-                    	<div class="form-group">
-                    		<input value="{{title}}" name="title" type="text" class="form-control cardTitle" autofocus required placeholder="Card title">
-                    	</div>
-                    {{else}}
-                    	<h3 class="modal-title cardTitle">{{title}}</h3>
-                    {{/if}}
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label class="control-label">Description</label>
-                        <textarea required class="form-control" name="description">{{description}}</textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                </div>
-            </form>
+    <form class="cardDetail">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{#if editingCardTitle}}
+            <div class="form-group">
+                <input value="{{title}}" name="title" type="text" class="form-control cardTitle" autofocus required placeholder="Card title">
+            </div>
+            {{else}}
+            <h3 class="modal-title cardTitle">{{title}}</h3> {{/if}}
         </div>
-    </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label class="control-label">Description</label>
+                <textarea required class="form-control" name="description">{{description}}</textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+    </form>
 </template>

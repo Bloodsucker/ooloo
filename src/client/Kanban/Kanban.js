@@ -1,5 +1,3 @@
-Modal.allowMultiple = true;
-
 KanbanController = RouteController.extend({
 	layoutTemplate: 'normalLayout',
 	template: 'kanban',
@@ -24,13 +22,32 @@ KanbanController = RouteController.extend({
 });
 
 Template.kanban.onRendered(function () {
-	Meteor.autorun(function () {
+	var template = this;
+
+	var bModal;
+	this.view.autorun(function () {
 		var cardId = Session.get('KanbanCardDetail');
 		if (cardId) {
-			Modal.hide();
-			Modal.show('KanbanCardDetail', function () {
+			bModal = BModals.showNew('KanbanCardDetail', function () {
 				return Cards.findOne(cardId);
+			}, {
+				attached: template
 			});
+
+			bModal.on('hide', function () {
+				if (!bModal.attached) return;
+
+				var controller = Router.current();
+				if (controller.params.cardId && controller.params.cardId !== cardId) {
+					return;
+				}
+
+				Router.go('kanban', {
+					desktopId: controller.params.desktopId
+				});
+			});
+		} else {
+			bModal && bModal.destroy();
 		}
 	});
 });

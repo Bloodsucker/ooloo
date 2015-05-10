@@ -10,6 +10,7 @@ less
 nemo64:bootstrap
 fourseven:scss
 iron:router
-peppelg:bootstrap-3-modal
 accounts-ui
 accounts-password
+msavin:mongol
+bloodsucker:bootstrap3-modals
