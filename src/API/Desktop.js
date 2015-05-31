@@ -6,5 +6,8 @@ API.Desktop = {
 	},
 	addColumn: function(desktopId, columnTitle) {
 		return Meteor.call("API.Desktop.addColumn", desktopId, columnTitle);
+	},
+	removeColumn: function (desktopId, columnId) {
+		return Meteor.call("API.Desktop.removeColumn", desktopId, columnId);
 	}
 };

@@ -86,3 +86,14 @@ Template.kanban.events({
 		Session.set('kanbanCreateCardInColumn', null);
 	}
 });
+
+Template.kanbanColumnOptions.events({
+	'click .removeColumn': function (e, t) {
+		e.preventDefault();
+
+		var desktop = Template.parentData();
+		var column = this;
+
+		API.Desktop.removeColumn(desktop._id, column._id);
+	}
+});

@@ -34,5 +34,17 @@ Meteor.methods({
 		});
 
 		return newColumn._id;
+	},
+
+	"API.Desktop.removeColumn": function (desktopId, columnId) {
+		Desktops.update({
+			_id: desktopId
+		}, {
+			$pull: {
+				"kanban.columns": {
+					_id: columnId
+				}
+			}
+		});
 	}
 });

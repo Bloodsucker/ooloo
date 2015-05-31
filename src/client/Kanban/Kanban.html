@@ -18,14 +18,27 @@
 			{{#unless createCardInColumn}}
 			<button type="button" class="btn btn-default createCard">New card</button>
 			{{/unless}}
+			
+			{{> kanbanColumnOptions}}
 		</div>
 		{{/each}}
 	</section>
-
 	<!-- {{> yield "cardDetail"}} -->
 </template>
 <template name="kanbanCard">
 	<li class="card">
 		<a href="{{pathFor 'kanbanCardDetail' desktopId=../../_id cardId=this._id}}">{{title}}</a>
 	</li>
+</template>
+<template name="kanbanColumnOptions">
+	<div class="btn-group dropdown kanbanColumnOptions">
+		<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+			<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu dropdown-menu-right" role="menu">
+			<li>
+				<a href="#" class="removeColumn">Remove column</a>
+			</li>
+		</ul>
+	</div>
 </template>
