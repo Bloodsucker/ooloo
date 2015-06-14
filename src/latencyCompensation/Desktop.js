@@ -46,5 +46,25 @@ Meteor.methods({
 				}
 			}
 		});
+	},
+
+	"API.Desktop.updateColumn": function (desktopId, columnId, diff) {
+		var $set = {};
+		(function (oBase, diff) {
+			for (var attr in diff) {
+				$set[oBase + attr] = diff[attr];
+			}
+		})("kanban.columns.$.", diff);
+
+		Desktops.update({
+			_id: desktopId,
+			"kanban.columns": {
+				$elemMatch: {
+					_id: columnId
+				}
+			}
+		}, {
+			$set: $set
+		});
 	}
 });

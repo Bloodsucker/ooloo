@@ -3,7 +3,14 @@
 	<section id="kanban">
 		{{#each kanban.columns}}
 		<div class="column">
-			<h3 class="columnName">{{title}}</h3>
+			<h3 class="columnName">
+			{{#if isEditColumnTitle}}
+				<form action="" class="editColumnTitle">
+					<input type="text" class="columnTitle" value="{{title}}">
+				</form>
+			{{else}}
+				{{title}}
+			{{/if}}</h3>
 			<ul class="cards">
 				{{#each cardsInColumn}} {{> kanbanCard}} {{/each}}
 

@@ -9,5 +9,13 @@ API.Desktop = {
 	},
 	removeColumn: function (desktopId, columnId) {
 		return Meteor.call("API.Desktop.removeColumn", desktopId, columnId);
+	},
+	changeColumnTitle: function (desktopId, columnId, newColumnName) {
+		return API.Desktop.updateColumn(desktopId, columnId, {
+			title: newColumnName
+		});
+	},
+	updateColumn: function (desktopId, columnId, diff) {
+		return Meteor.call("API.Desktop.updateColumn", desktopId, columnId, diff);
 	}
 };

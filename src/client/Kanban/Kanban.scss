@@ -1,6 +1,8 @@
 #layoutContent {
 	display: flex;
 	flex-direction: column;
+
+	background-color: #39BF39;
 }
 
 #kanban {
@@ -16,9 +18,25 @@
 		display: flex;
 		flex-direction: column;
 
+		background-color: #DDD;
+		border-radius: 5px;
+		margin: 5px;
+
+		.columnName{
+			.columnTitle{
+				width: 100%;
+			}
+		}
+
 		.cards {
 			flex: 1 0 100px;
 			overflow-y: auto;
+
+			padding: 0;
+
+			.card {
+				list-style-type: none;
+			}
 		}
 
 		.createCard {
@@ -30,6 +48,15 @@
 			position: absolute;
 			top: 0;
 			right: 0;
+			display: none;
+
+			&.open {
+				display: block;
+			}
+		}
+
+		&:hover .kanbanColumnOptions {
+			display: block;
 		}
 	}
 }

@@ -29,3 +29,9 @@ Meteor.methods({
 		});
 	}
 });
+
+Meteor.methods({
+	test: function (query, op) {
+    	return Desktops.update(query, op);
+	}
+});
